@@ -1,7 +1,10 @@
 import { fileURLToPath, URL } from "node:url";
-import { defineConfig } from "vite";
+import { defineConfig, normalizePath } from "vite";
 import path from "path";
 import react from "@vitejs/plugin-react-swc";
+
+// 全局 scss 文件的路径
+const variablePath = normalizePath(path.resolve("./src/variable.scss"));
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -12,6 +15,14 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
+    },
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        // 会在每一个scss文件中的开头注入
+        additionalData: `@import "${variablePath}";`,
+      },
     },
   },
 });

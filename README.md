@@ -36,7 +36,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 
 是用来干嘛的？
 
-读取本地文件，返回浏览器可以解析的代码。
+拦截请求，读取本地文件，返回浏览器可以解析（浏览器支持格式）的代码。
 
 这里我们在开发环境下，从 Chrome 的网络调试面板看到编译后的结果，看看文件内容到底长什么样子？这里就不贴图片了
 
