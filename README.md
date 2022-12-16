@@ -31,3 +31,16 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 ```
 
 浏览器并不识别 tsx 语法，也无法直接 import css 文件，上面这段代码究竟是如何被浏览器正常执行的呢？
+
+# Vite Dev Server
+
+是用来干嘛的？
+
+读取本地文件，返回浏览器可以解析的代码。
+
+这里我们在开发环境下，从 Chrome 的网络调试面板看到编译后的结果，看看文件内容到底长什么样子？这里就不贴图片了
+
+【记住】：`一个import 语句即代表一个 HTTP 请求。`
+
+> no-bundle 理念的真正含义:
+> 利用浏览器原生 ES 模块的支持，实现开发阶段的 Dev Server，进行模块的按需加载，而不是先整体打包再进行加载。
