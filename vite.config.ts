@@ -1,6 +1,7 @@
 import { fileURLToPath, URL } from "node:url";
 import { defineConfig, normalizePath } from "vite";
 import path from "path";
+import autoprefixer from "autoprefixer";
 import react from "@vitejs/plugin-react-swc";
 
 // 全局 scss 文件的路径
@@ -27,6 +28,13 @@ export default defineConfig({
         // 会在每一个scss文件中的开头注入
         additionalData: `@import "${variablePath}";`,
       },
+    },
+    postcss: {
+      plugins: [
+        autoprefixer({
+          overrideBrowserslist: ["Chrome > 20", "ff > 10", "ie 11"],
+        }),
+      ],
     },
   },
 });
