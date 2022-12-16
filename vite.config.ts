@@ -18,6 +18,10 @@ export default defineConfig({
     },
   },
   css: {
+    modules: {
+      // name 表示文件名 local表示类名，我们可以自定义元素的类名
+      generateScopedName: "[name]__[local]__[hash:base64:5]",
+    },
     preprocessorOptions: {
       scss: {
         // 会在每一个scss文件中的开头注入
