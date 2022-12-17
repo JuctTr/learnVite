@@ -5,6 +5,8 @@ import "./index.scss";
 import style from "./index.module.scss";
 // 1. 导入图片
 import logoSrc from "@assets/vite.svg";
+// SVG 组件方式加载
+import { ReactComponent as ReactLogo } from "@assets/vite.svg";
 
 function App() {
     const [count, setCount] = useState(0);
@@ -43,6 +45,8 @@ function App() {
             <img src={logoSrc} alt="" />
             <img alt="" id="logo" />
             <div className="logo" style={{ width: 20, height: 20 }}></div>
+            <h1>SVG 组件方式加载</h1>
+            <ReactLogo />
         </div>
     );
 }
