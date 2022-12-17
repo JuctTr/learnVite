@@ -86,5 +86,9 @@ export default defineConfig({
          * 【注意】：svg 格式的文件不受这个临时值的影响，始终会打包成单独的文件，因为它和普通格式的图片不一样，需要动态设置一些属性
          */
         assetsInlineLimit: 8 * 1024
+    },
+    optimizeDeps: {
+        // 按需加载的依赖都可以声明到这个数组里，强制预构建
+        include: ["object-assign"]
     }
 });
