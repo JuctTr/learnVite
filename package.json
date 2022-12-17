@@ -13,6 +13,7 @@
         "prepare": "husky install"
     },
     "dependencies": {
+        "@loadable/component": "^5.15.2",
         "antd": "^5.0.7",
         "object-assign": "^4.1.1",
         "react": "^18.2.0",

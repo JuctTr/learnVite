@@ -89,6 +89,17 @@ export default defineConfig({
     },
     optimizeDeps: {
         // 按需加载的依赖都可以声明到这个数组里，强制预构建
-        include: ["object-assign"]
+        include: [
+            "object-assign",
+            /**
+             * 【背景】：手动 exclude 的包@loadable/component本身具有 ESM 格式的产物，
+             *  但它的某个依赖hoist-non-react-statics，和 react-is的产物并没有提供 ESM 格式，会导致运行时加载失败。
+             */
+            // 间接依赖的声明语法，通过`>`分开, 如`a > b`表示 a 中依赖的 b
+            "@loadable/component > hoist-non-react-statics",
+            "@loadable/component > react-is"
+        ],
+        // 将某些依赖从预构建的过程中排除
+        exclude: ["@loadable/component"]
     }
 });

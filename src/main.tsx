@@ -1,8 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
+import loadable from "@loadable/component";
 import App from "./App";
 import "./index.css";
+
+const DynamicComponent = loadable(
+    () => import("./components/DynamicComponent")
+);
 
 /**
  * 测试动态 import 发生的二次预构建
@@ -17,6 +22,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <React.StrictMode>
         <BrowserRouter>
             <App />
+            <DynamicComponent />
         </BrowserRouter>
     </React.StrictMode>
 );
