@@ -7,8 +7,10 @@
         "dev": "vite",
         "build": "tsc && vite build",
         "preview": "vite preview",
+        "lint": "npm run lint:script && npm run lint:style",
         "lint:script": "eslint --ext .js,.jsx,.ts,.tsx --fix --quiet ./",
-        "lint:style": "stylelint --fix \"src/**/*.{css,scss}\""
+        "lint:style": "stylelint --fix \"src/**/*.{css,scss}\"",
+        "prepare": "husky install"
     },
     "dependencies": {
         "antd": "^5.0.7",
@@ -29,6 +31,8 @@
         "eslint-config-prettier": "^8.5.0",
         "eslint-plugin-prettier": "^4.2.1",
         "eslint-plugin-react": "^7.31.11",
+        "husky": "^8.0.2",
+        "lint-staged": "^13.1.0",
         "postcss": "^8.1.0",
         "prettier": "^2.8.1",
         "rollup": "^3.7.4",
@@ -42,5 +46,15 @@
         "typescript": "^4.9.3",
         "vite": "^4.0.0",
         "vite-plugin-eslint": "^1.8.1"
+    },
+    "lint-staged": {
+        "**/*.{js,jsx,tsx,ts}": [
+            "npm run lint:script",
+            "git add ."
+        ],
+        "**/*.{css,scss}": [
+            "npm run lint:style",
+            "git add ."
+        ]
     }
 }

@@ -22,7 +22,7 @@ function App() {
                 </a>
             </div>
             <h1 className="header">Vite + React</h1>
-            <h1 className={style.cssModule}>CSS Module</h1>
+            <h1 className={style.cssmodule}>CSS Module</h1>
             <div className="card">
                 <button onClick={() => setCount((count) => count + 1)}>
                     count is {count}
