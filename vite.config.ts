@@ -7,6 +7,8 @@ import viteEslint from "vite-plugin-eslint";
 // 这个插件好像没维护了，后续再看
 // import viteStylelint from "@amatlash/vite-plugin-stylelint";
 import svgr from "vite-plugin-svgr";
+// 图片压缩，评论区也有人推荐使用tinypng来压缩
+import viteImagemin from "vite-plugin-imagemin";
 
 // 全局 scss 文件的路径
 const variablePath = normalizePath(path.resolve("./src/variable.scss"));
@@ -26,7 +28,29 @@ export default defineConfig({
         //     // 对某些文件排除检查
         //     exclude: /windicss|node_modules|dist/
         // })
-        svgr()
+        svgr(),
+        viteImagemin({
+            // 无损压缩配置，无损压缩下图片质量不会变差
+            optipng: {
+                optimizationLevel: 7
+            },
+            // 有损压缩配置，有损压缩下图片质量可能会变差
+            pngquant: {
+                quality: [0.8, 0.9]
+            },
+            // svg 优化
+            svgo: {
+                plugins: [
+                    {
+                        name: "removeViewBox"
+                    },
+                    {
+                        name: "removeEmptyAttrs",
+                        active: false
+                    }
+                ]
+            }
+        })
     ],
     resolve: {
         alias: {
