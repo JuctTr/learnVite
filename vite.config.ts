@@ -4,6 +4,8 @@ import path from "path";
 import autoprefixer from "autoprefixer";
 import react from "@vitejs/plugin-react-swc";
 import viteEslint from "vite-plugin-eslint";
+// 这个插件好像没维护了，后续再看
+// import viteStylelint from "@amatlash/vite-plugin-stylelint";
 
 // 全局 scss 文件的路径
 const variablePath = normalizePath(path.resolve("./src/variable.scss"));
@@ -18,6 +20,11 @@ export default defineConfig({
         react(),
         // 这个插件采用另一个进程来运行 ESLint 的扫描工作，因此不会影响 Vite 项目的启动速度
         viteEslint()
+        // 开发阶段提前暴露出样式代码的规范问题，这个插件好像没维护了，后续再看
+        // viteStylelint.default({
+        //     // 对某些文件排除检查
+        //     exclude: /windicss|node_modules|dist/
+        // })
     ],
     resolve: {
         alias: {
