@@ -3,6 +3,7 @@ import { defineConfig, normalizePath } from "vite";
 import path from "path";
 import autoprefixer from "autoprefixer";
 import react from "@vitejs/plugin-react-swc";
+import viteEslint from "vite-plugin-eslint";
 
 // 全局 scss 文件的路径
 const variablePath = normalizePath(path.resolve("./src/variable.scss"));
@@ -12,7 +13,12 @@ export default defineConfig({
     // publicDir: "../public",
     // // 手动指定项目根目录位置
     // root: path.join(__dirname, "src"),
-    plugins: [react()], // 配置了官方的 react 插件，来提供 React 项目编译和热更新的功能。
+    plugins: [
+        // 配置了官方的 react 插件，来提供 React 项目编译和热更新的功能。
+        react(),
+        // 这个插件采用另一个进程来运行 ESLint 的扫描工作，因此不会影响 Vite 项目的启动速度
+        viteEslint()
+    ],
     resolve: {
         alias: {
             "@": fileURLToPath(new URL("./src", import.meta.url))
