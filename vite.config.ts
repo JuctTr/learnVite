@@ -12,6 +12,8 @@ import viteImagemin from "vite-plugin-imagemin";
 import vitePluginTest from "./plugins/vite-plugin-test";
 // 虚拟模块插件
 import virtual from "./plugins/vite-plugin-virtual-module";
+// 调试插件
+import inspect from "vite-plugin-inspect";
 
 // 全局 scss 文件的路径
 const variablePath = normalizePath(path.resolve("./src/variable.scss"));
@@ -55,7 +57,8 @@ export default defineConfig({
             }
         }),
         vitePluginTest(),
-        virtual()
+        virtual(),
+        inspect()
     ],
     resolve: {
         alias: {
