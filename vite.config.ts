@@ -9,6 +9,7 @@ import viteEslint from "vite-plugin-eslint";
 import svgr from "vite-plugin-svgr";
 // 图片压缩，评论区也有人推荐使用tinypng来压缩
 import viteImagemin from "vite-plugin-imagemin";
+import vitePluginTest from "./plugins/vite-plugin-test";
 
 // 全局 scss 文件的路径
 const variablePath = normalizePath(path.resolve("./src/variable.scss"));
@@ -50,7 +51,8 @@ export default defineConfig({
                     }
                 ]
             }
-        })
+        }),
+        vitePluginTest()
     ],
     resolve: {
         alias: {
@@ -87,6 +89,8 @@ export default defineConfig({
          */
         assetsInlineLimit: 8 * 1024
     },
+    // 你的项目中还存在其它格式的静态资源，你可以通过assetsInclude配置让 Vite 来支持加载
+    // assetsInclude: [".ttf", ".woff", ".txt"]
     optimizeDeps: {
         // 按需加载的依赖都可以声明到这个数组里，强制预构建
         include: [
