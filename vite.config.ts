@@ -10,6 +10,8 @@ import svgr from "vite-plugin-svgr";
 // 图片压缩，评论区也有人推荐使用tinypng来压缩
 import viteImagemin from "vite-plugin-imagemin";
 import vitePluginTest from "./plugins/vite-plugin-test";
+// 虚拟模块插件
+import virtual from "./plugins/vite-plugin-virtual-module";
 
 // 全局 scss 文件的路径
 const variablePath = normalizePath(path.resolve("./src/variable.scss"));
@@ -52,7 +54,8 @@ export default defineConfig({
                 ]
             }
         }),
-        vitePluginTest()
+        vitePluginTest(),
+        virtual()
     ],
     resolve: {
         alias: {

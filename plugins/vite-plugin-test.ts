@@ -1,5 +1,9 @@
 import { Plugin } from "vite";
 
+/**
+ * @document https://cn.vitejs.dev/guide/api-plugin.html
+ * @returns {Plugin}
+ */
 export default function vitePluginTest(): Plugin {
     return {
         name: "vite-plugin-test",
@@ -21,7 +25,7 @@ export default function vitePluginTest(): Plugin {
             console.log("configureServer");
             setTimeout(() => {
                 // 手动退出进程
-                process.kill(process.pid, "SIGTERM");
+                // process.kill(process.pid, "SIGTERM");
             }, 3000);
         },
         // 通用钩子

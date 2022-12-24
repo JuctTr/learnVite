@@ -5,6 +5,12 @@ import loadable from "@loadable/component";
 import App from "./App";
 import "./index.css";
 
+import fib from "virtual:fib";
+import env from "virtual:env";
+
+console.log(`【虚拟模块】结果: ${fib(10)}`);
+console.log("【虚拟模块】", env);
+
 const DynamicComponent = loadable(
     () => import("./components/DynamicComponent")
 );
