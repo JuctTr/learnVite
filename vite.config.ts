@@ -14,6 +14,8 @@ import vitePluginTest from "./plugins/vite-plugin-test";
 import virtual from "./plugins/vite-plugin-virtual-module";
 // 调试插件
 import inspect from "vite-plugin-inspect";
+// 语法降级与Polyfill：消灭低版本浏览器兼容问题
+import legacy from "@vitejs/plugin-legacy";
 
 // 全局 scss 文件的路径
 const variablePath = normalizePath(path.resolve("./src/variable.scss"));
@@ -58,6 +60,10 @@ export default defineConfig({
         }),
         vitePluginTest(),
         virtual(),
+        legacy({
+            // 设置目标浏览器，browserslist 配置语法
+            targets: ["ie >= 11"]
+        }),
         inspect()
     ],
     resolve: {
@@ -99,7 +105,7 @@ export default defineConfig({
                 // manualChunks 配置
                 manualChunks: {
                     // 将 React 相关库打包成单独的 chunk 中
-                    "react-vendor": ["react", "react-dom"]
+                    "react-vendor": ["react", "react-dom", "react-router-dom"]
                 }
             }
         }

@@ -6,4 +6,19 @@ module.exports = {
     semi: true, // 行尾是否使用分号，默认为true
     trailingComma: "none", // 是否使用尾逗号
     bracketSpacing: true // 对象大括号直接是否有空格，默认为 true，效果：{ a: 1 }
+    // overrides: [
+    //     {
+    //         files: ["*.json5"],
+    //         options: {
+    //             singleQuote: false,
+    //             quoteProps: "preserve"
+    //         }
+    //     },
+    //     {
+    //         files: ["*.yml"],
+    //         options: {
+    //             singleQuote: false
+    //         }
+    //     }
+    // ]
 };
