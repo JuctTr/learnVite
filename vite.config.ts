@@ -93,7 +93,16 @@ export default defineConfig({
          * 我们可以修改这个临界值
          * 【注意】：svg 格式的文件不受这个临时值的影响，始终会打包成单独的文件，因为它和普通格式的图片不一样，需要动态设置一些属性
          */
-        assetsInlineLimit: 8 * 1024
+        assetsInlineLimit: 8 * 1024,
+        rollupOptions: {
+            output: {
+                // manualChunks 配置
+                manualChunks: {
+                    // 将 React 相关库打包成单独的 chunk 中
+                    "react-vendor": ["react", "react-dom"]
+                }
+            }
+        }
     },
     // 你的项目中还存在其它格式的静态资源，你可以通过assetsInclude配置让 Vite 来支持加载
     // assetsInclude: [".ttf", ".woff", ".txt"]
