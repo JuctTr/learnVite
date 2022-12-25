@@ -17,6 +17,8 @@ import inspect from "vite-plugin-inspect";
 // 语法降级与Polyfill：消灭低版本浏览器兼容问题
 import legacy from "@vitejs/plugin-legacy";
 
+import visualizer from "rollup-plugin-visualizer";
+
 // 全局 scss 文件的路径
 const variablePath = normalizePath(path.resolve("./src/variable.scss"));
 
@@ -64,7 +66,11 @@ export default defineConfig({
             // 设置目标浏览器，browserslist 配置语法
             targets: ["ie >= 11"]
         }),
-        inspect()
+        inspect(),
+        visualizer({
+            // 打包完成后自动打开浏览器，显示产物体积报告
+            open: true
+        })
     ],
     resolve: {
         alias: {
