@@ -9,6 +9,7 @@ import logoSrc from "@assets/images/vite.svg";
 import { ReactComponent as SvgComponentLogo } from "@assets/images/vite.svg";
 // Vite 中已经内置了对于 JSON 文件的解析，底层使用@rollup/pluginutils 的 dataToEsm 方法将 JSON 对象转换为一个包含各种具名导出的 ES 模块
 import { version } from "../package.json";
+import base64Png from "@assets/images/app_download_QR.cbe9f32.png";
 
 function App() {
     const [count, setCount] = useState(0);
@@ -60,6 +61,8 @@ function App() {
                 }
                 alt="稀土掘金"
             />
+            <h1>资源打包单文件 or Base64</h1>
+            <img src={base64Png} alt="" />
         </div>
     );
 }
