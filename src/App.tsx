@@ -50,6 +50,16 @@ function App() {
             <div className="vite-logo" style={{ width: 20, height: 20 }}></div>
             <h1>SVG 组件方式加载</h1>
             <SvgComponentLogo />
+            <h1>图片放在CDN上</h1>
+            <img
+                src={
+                    new URL(
+                        "app_download_QR.cbe9f32.png",
+                        import.meta.env.VITE_IMG_BASE_URL
+                    ).href
+                }
+                alt="稀土掘金"
+            />
         </div>
     );
 }
