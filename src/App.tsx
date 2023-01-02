@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import reactLogo from "./assets/react.svg";
+import reactLogo from "@assets/images/react.svg";
 import "./App.css";
 import "./index.scss";
 import style from "./index.module.scss";
 // 1. 导入图片
-import logoSrc from "@assets/vite.svg";
+import logoSrc from "@assets/images/vite.svg";
 // SVG 组件方式加载
-import { ReactComponent as SvgComponentLogo } from "@assets/vite.svg";
+import { ReactComponent as SvgComponentLogo } from "@assets/images/vite.svg";
 // Vite 中已经内置了对于 JSON 文件的解析，底层使用@rollup/pluginutils 的 dataToEsm 方法将 JSON 对象转换为一个包含各种具名导出的 ES 模块
 import { version } from "../package.json";
 
