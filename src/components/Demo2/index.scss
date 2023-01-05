@@ -1,0 +1,12 @@
+.lzd-pull-to-refresh {
+    &-head {
+        // position: relative;
+        overflow: hidden;
+
+        &-content {
+            // position: absolute;
+            width: 100%;
+            color: #000;
+        }
+    }
+}

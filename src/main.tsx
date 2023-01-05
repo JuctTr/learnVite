@@ -3,7 +3,9 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import loadable from "@loadable/component";
 import App from "./App";
-import "./index.css";
+import Demo1 from "./components/Demo1";
+import Demo2 from "./components/Demo2";
+import "./index.scss";
 
 import fib from "virtual:fib";
 import env from "virtual:env";
@@ -26,9 +28,21 @@ importModule("zh_CN");
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <React.StrictMode>
-        <BrowserRouter>
-            <App />
-            <DynamicComponent />
-        </BrowserRouter>
+        <Demo1 />
+        <div
+            style={{
+                margin: "0 auto",
+                height: "500px",
+                width: "300px",
+                overflow: "auto"
+            }}
+        >
+            <Demo2>
+                <App />
+            </Demo2>
+        </div>
+
+        {/* <BrowserRouter></BrowserRouter> */}
+        <DynamicComponent />
     </React.StrictMode>
 );

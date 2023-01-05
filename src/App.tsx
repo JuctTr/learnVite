@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import reactLogo from "@assets/images/react.svg";
 import "./App.css";
-import "./index.scss";
 import style from "./index.module.scss";
 // 1. 导入图片
 import logoSrc from "@assets/images/vite.svg";
