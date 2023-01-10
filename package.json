@@ -59,15 +59,5 @@
         "vite-plugin-eslint": "^1.8.1",
         "vite-plugin-inspect": "^0.7.11",
         "vite-plugin-svgr": "^2.4.0"
-    },
-    "lint-staged": {
-        "**/*.{js,jsx,tsx,ts}": [
-            "npm run lint:script",
-            "git add ."
-        ],
-        "**/*.{css,scss}": [
-            "npm run lint:style",
-            "git add ."
-        ]
     }
 }
