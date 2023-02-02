@@ -9,6 +9,7 @@ import "./index.scss";
 
 import fib from "virtual:fib";
 import env from "virtual:env";
+import Demo3 from "./components/Demo3";
 
 console.log(`【虚拟模块】结果: ${fib(10)}`);
 console.log("【虚拟模块】", env);
@@ -41,7 +42,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
                 <App />
             </Demo2>
         </div>
-
+        <Demo3 />
         {/* <BrowserRouter></BrowserRouter> */}
         <DynamicComponent />
     </React.StrictMode>
