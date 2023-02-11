@@ -19,13 +19,14 @@ module.exports = {
             files,
             "**/miniVite/playground/**/*.{js,jsx,tsx,ts}"
         );
-        return `eslint ${match.join(" ")}  --fix --quiet`;
+        return `eslint ${match.join(" ")} --fix --quiet`;
     },
     "**/*.{css,scss}": (files) => {
         const match = micromatch.not(
             files,
             "**/miniVite/playground/**/*.{css,scss}"
         );
-        return `stylelint ${match.join(" ")}  --fix`;
+        // return 'stylelint "**/*.{css,scss,sass}" "!**/miniVite/playground/**"';
+        return `stylelint ${match.join(",")}`;
     }
 };
