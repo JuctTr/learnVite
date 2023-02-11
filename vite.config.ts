@@ -89,6 +89,7 @@ export default defineConfig({
                 additionalData: `@import "${variablePath}";`
             }
         },
+        // 对于postcss插件的使用，建议放到postcss.config.js中统一管理，vite可以自动读取并加载; 后期加新的postcss插件，直接在postcss.config加即可
         postcss: {
             plugins: [
                 autoprefixer({
@@ -119,6 +120,7 @@ export default defineConfig({
     // 你的项目中还存在其它格式的静态资源，你可以通过assetsInclude配置让 Vite 来支持加载
     // assetsInclude: [".ttf", ".woff", ".txt"]
     optimizeDeps: {
+        // force: true, // 有时候我们想要修改依赖模块的代码，做一些测试或者打个补丁，这时候就要用到强制依赖预构建。
         // 按需加载的依赖都可以声明到这个数组里，强制预构建
         include: [
             "object-assign",
@@ -132,5 +134,44 @@ export default defineConfig({
         ],
         // 将某些依赖从预构建的过程中排除
         exclude: ["@loadable/component"]
+    },
+    server: {
+        /**
+         * 当我们开发移动端项目时，需要在手机浏览器上访问当前项目。
+         * 这时候可以将 host 设置为 true 或 0.0.0.0 ，这样服务器就会监听所有地址，包括局域网和公网地址。
+         */
+        // host: true
+        /**
+         * 反向代理也是我们经常会用到的一个功能，通常我们使用它来进行跨域
+         */
+        // proxy: {
+        //     // 字符串简写写法
+        //     "/foo": "http://localhost:4567",
+        //     // 选项写法
+        //     "/api": {
+        //         target: "http://jsonplaceholder.typicode.com",
+        //         changeOrigin: true,
+        //         rewrite: (path) => path.replace(/^\/api/, "")
+        //     },
+        //     // 正则表达式写法
+        //     "^/fallback/.*": {
+        //         target: "http://jsonplaceholder.typicode.com",
+        //         changeOrigin: true,
+        //         rewrite: (path) => path.replace(/^\/fallback/, "")
+        //     },
+        //     // 使用 proxy 实例
+        //     "/api": {
+        //         target: "http://jsonplaceholder.typicode.com",
+        //         changeOrigin: true,
+        //         configure: (proxy, options) => {
+        //             // proxy 是 'http-proxy' 的实例
+        //         }
+        //     },
+        //     // Proxying websockets or socket.io
+        //     "/socket.io": {
+        //         target: "ws://localhost:3000",
+        //         ws: true
+        //     }
+        // }
     }
 });
