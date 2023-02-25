@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+// import { BrowserRouter } from "react-router-dom";
 import loadable from "@loadable/component";
 import App from "./App";
 import Demo1 from "./components/Demo1";
@@ -27,23 +27,35 @@ const DynamicComponent = loadable(
 const importModule = (m: unknown) => import(`./locales/${m}.ts`);
 importModule("zh_CN");
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-    <React.StrictMode>
-        <Demo1 />
-        <div
-            style={{
-                margin: "0 auto",
-                height: "500px",
-                width: "300px",
-                overflow: "auto"
-            }}
-        >
-            <Demo2>
-                <App />
-            </Demo2>
+function Index() {
+    return (
+        <div className="container">
+            <Demo1 />
+            <div
+                style={{
+                    margin: "0 auto",
+                    height: "500px",
+                    width: "300px",
+                    overflow: "auto"
+                }}
+            >
+                <Demo2>
+                    <App />
+                </Demo2>
+            </div>
+            <Demo3 />
+            {/* <BrowserRouter></BrowserRouter> */}
+            <DynamicComponent />
         </div>
-        <Demo3 />
-        {/* <BrowserRouter></BrowserRouter> */}
-        <DynamicComponent />
+    );
+}
+
+const root = ReactDOM.createRoot(
+    document.getElementById("root") as HTMLElement
+);
+
+root.render(
+    <React.StrictMode>
+        <Index />
     </React.StrictMode>
 );
