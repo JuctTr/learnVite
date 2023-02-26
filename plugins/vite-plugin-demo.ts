@@ -61,20 +61,38 @@ export default function vitePluginTest(): Plugin {
          * @param html
          * @returns
          */
-        // transformIndexHtml(html) {
-        //     return {
-        //         html
-        //     };
-        // },
+        transformIndexHtml(html, ctx) {
+            console.log("【transformIndexHtml】hook => ");
+            // 替换标签 操作 html
+            return {
+                html,
+                // 注入标签
+                tags: [
+                    // {
+                    //     // 放到 body 末尾，可取值还有`head`|`head-prepend`|`body-prepend`，顾名思义
+                    //     injectTo: "body",
+                    //     // 标签属性定义
+                    //     attrs: { type: "module", src: "./index.ts" },
+                    //     // 标签名
+                    //     tag: "script"
+                    // },
+                    {
+                        attrs: { class: "inject" },
+                        tag: "div",
+                        children: "我是在 transformIndexHtml 钩子 注入的"
+                    }
+                ]
+            };
+        },
         /**
          * 请求响应阶段，在每个传入模块请求时被调用
          */
         // 通用钩子
-        // resolveId() {},
+        // resolveId(id, importer) {},
         // 通用钩子
-        // load() {},
+        // load(id) {},
         // 通用钩子
-        // transform() {},
+        // transform(code, id, transformOptions) {},
         /**
          * Vite 独有钩子
          * 在 Vite 服务端处理热更新时被调用
