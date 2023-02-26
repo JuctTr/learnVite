@@ -18,7 +18,6 @@ export default function virtualModulePlugin(): Plugin {
         name: "vite-plugin-virtual-module",
         configResolved(c: ResolvedConfig) {
             config = c;
-            console.log(config.env);
         },
         resolveId(id) {
             if (id === virtualFibModuleId) {

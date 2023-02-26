@@ -1,35 +1,59 @@
-import { Plugin } from "vite";
+import type { Plugin, ResolvedConfig } from "vite";
 
 /**
  * @document https://cn.vitejs.dev/guide/api-plugin.html
  * @returns {Plugin}
  */
 export default function vitePluginTest(): Plugin {
+    let finalConfig: ResolvedConfig;
     return {
-        name: "vite-plugin-test",
+        name: "vite-plugin-demo",
+        // enforce: "pre", // 'pre' | 'post'
+        apply: "serve", // "build" | "serve"
         /**
-         * 对配置文件导出的对象进行自定义的操作
+         * 服务器启动阶段被调用
+         */
+        /**
          * Vite 独有钩子
+         * 对配置文件导出的对象进行自定义的操作
+         * 推荐返回一个配置对象，该对象会与vite已有的配置进行深度合并
          * @param config
          */
-        config(config) {
-            console.log("config");
+        config(config, ctx) {
+            console.log("【config】hook => ", ctx);
+            return {};
         },
-        // Vite 独有钩子
+        /**
+         * Vite 独有钩子
+         * 用来记录最终的配置信息，在解析完配置之后会调用该 hook
+         * 包含 vite 默认的 配置
+         * @param resolvedCofnig
+         */
         configResolved(resolvedCofnig) {
-            console.log("configResolved");
+            finalConfig = resolvedCofnig;
+            console.log("【configResolved】hook => ", finalConfig.env);
+        },
+        // 通用钩子
+        options(opts) {
+            console.log("【options】hook => ", opts);
+            return opts;
         },
         /**
          * Vite 独有钩子
          * 仅在开发阶段会被调用，用于扩展 Vite 的 Dev Server
+         * 一般用于增加自定义 server 中间件
          * @param server
          */
         configureServer(server) {
-            console.log("configureServer");
-            setTimeout(() => {
-                // 手动退出进程
-                // process.kill(process.pid, "SIGTERM");
-            }, 3000);
+            console.log("【configureServer】hook => ");
+            // setTimeout(() => {
+            //     // 手动退出进程
+            //     process.kill(process.pid, "SIGTERM");
+            // }, 3000);
+        },
+        // 通用钩子
+        buildStart() {
+            console.log("【buildStart】hook => ");
         },
         /**
          * Vite 独有钩子
@@ -42,6 +66,15 @@ export default function vitePluginTest(): Plugin {
         //         html
         //     };
         // },
+        /**
+         * 请求响应阶段，在每个传入模块请求时被调用
+         */
+        // 通用钩子
+        // resolveId() {},
+        // 通用钩子
+        // load() {},
+        // 通用钩子
+        // transform() {},
         /**
          * Vite 独有钩子
          * 在 Vite 服务端处理热更新时被调用
@@ -67,36 +100,15 @@ export default function vitePluginTest(): Plugin {
         //     return [];
         // },
         /**
-         * 服务器启动阶段被调用
-         */
-        // 通用钩子
-        options(opts) {
-            console.log("options");
-            return opts;
-        },
-        // 通用钩子
-        buildStart() {
-            console.log("buildStart");
-        },
-        /**
-         * 在每个传入模块请求时被调用
-         */
-        // 通用钩子
-        // resolveId() {},
-        // 通用钩子
-        // load() {},
-        // 通用钩子
-        // transform() {},
-        /**
          * 在服务器关闭时被调用
          */
         // 通用钩子
         buildEnd() {
-            console.log("buildEnd");
+            console.log("【buildEnd】hook => ");
         },
         // 通用钩子
         closeBundle() {
-            console.log("closeBundle");
+            console.log("【closeBundle】hook => ");
         }
     };
 }
