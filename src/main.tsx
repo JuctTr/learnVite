@@ -3,13 +3,13 @@ import ReactDOM from "react-dom/client";
 // import { BrowserRouter } from "react-router-dom";
 import loadable from "@loadable/component";
 import App from "./App";
+import PullToRefresh from "./components/PullToRefresh";
 import Demo1 from "./components/Demo1";
-import Demo2 from "./components/Demo2";
+import Demo3 from "./components/Demo3";
 import "./index.scss";
 
 import fib from "virtual:fib";
 import env from "virtual:env";
-import Demo3 from "./components/Demo3";
 
 console.log(`【虚拟模块】结果: ${fib(10)}`);
 console.log("【虚拟模块】", env);
@@ -30,22 +30,13 @@ importModule("zh_CN");
 function Index() {
     return (
         <div className="container">
-            <Demo1 />
-            <div
-                style={{
-                    margin: "0 auto",
-                    height: "500px",
-                    width: "300px",
-                    overflow: "auto"
-                }}
-            >
-                <Demo2>
-                    <App />
-                </Demo2>
-            </div>
-            <Demo3 />
+            <PullToRefresh>
+                <App />
+                <Demo1 />
+                <Demo3 />
+                <DynamicComponent />
+            </PullToRefresh>
             {/* <BrowserRouter></BrowserRouter> */}
-            <DynamicComponent />
         </div>
     );
 }

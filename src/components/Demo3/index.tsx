@@ -15,6 +15,7 @@ function Demo3() {
 
     return (
         <>
+            <h1>RateCircle</h1>
             <button onClick={onChange}>点击</button>
             <RateCircle start={90} rate={rate} content={renderContent} />
         </>

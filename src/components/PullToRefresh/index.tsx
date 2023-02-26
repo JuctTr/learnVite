@@ -38,7 +38,7 @@ function getScrollTop(element: Window | Element) {
     return "scrollTop" in element ? element.scrollTop : element.scrollY;
 }
 
-export default function Demo2(props: PullToRefreshProps) {
+export default function PullToRefresh(props: PullToRefreshProps) {
     const myProps = {
         ...defaultProps,
         ...props
@@ -53,7 +53,7 @@ export default function Demo2(props: PullToRefreshProps) {
     }));
 
     const headHeight = props.headHeight ?? 40;
-    const threshold = props.headHeight ?? 40;
+    const threshold = props.threshold ?? 40;
 
     const [status, setStatus] = useState<PullStatus>("pulling");
 
