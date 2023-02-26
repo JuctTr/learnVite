@@ -10,7 +10,7 @@ const classPrefix = "lzd-pull-to-refresh";
 export type PullStatus = "pulling" | "canRelease" | "refreshing" | "complete";
 
 export type PullToRefreshProps = {
-    onRefresh?: () => Promise<any>;
+    onRefresh?: () => Promise<unknown>;
     pullingText?: ReactNode;
     canReleaseText?: ReactNode;
     refreshingText?: ReactNode;

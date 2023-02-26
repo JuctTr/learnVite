@@ -87,12 +87,34 @@ export default function vitePluginTest(): Plugin {
         /**
          * 请求响应阶段，在每个传入模块请求时被调用
          */
-        // 通用钩子
-        // resolveId(id, importer) {},
-        // 通用钩子
-        // load(id) {},
-        // 通用钩子
-        // transform(code, id, transformOptions) {},
+        /**
+         * 通用钩子
+         * @param id 当前模块路径
+         * @param importer 引用当前模块的模块路径
+         * @param resolveOptions 其余参数
+         */
+        resolveId(id, importer, resolveOptions) {
+            // console.log("【resolveId】hook => ");
+            // console.log("文件路径", id);
+            // console.log("引用当前模块的模块路径", importer);
+            // 解析文件路径
+        },
+        /**
+         * 通过 resolveId 解析后的路径来加载模块内容
+         * @param id
+         */
+        load(id) {
+            // console.log("【load】hook => ", id);
+        },
+        /**
+         * 对加载后的模块内容进行自定义的转换
+         * @param code
+         * @param id
+         * @param transformOptions
+         */
+        transform(code, id, transformOptions) {
+            // console.log("【transform】hook => ", id);
+        },
         /**
          * Vite 独有钩子
          * 在 Vite 服务端处理热更新时被调用

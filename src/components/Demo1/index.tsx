@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useSpring, animated } from "@react-spring/web";
-import { useDrag } from "@use-gesture/react";
+// import { useDrag } from "@use-gesture/react";
 
 export default function Demo1() {
     const [open, setOpen] = useState(false);
