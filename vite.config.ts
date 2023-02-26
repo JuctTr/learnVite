@@ -9,7 +9,7 @@ import viteEslint from "vite-plugin-eslint";
 import svgr from "vite-plugin-svgr";
 // 图片压缩，评论区也有人推荐使用tinypng来压缩
 import viteImagemin from "vite-plugin-imagemin";
-import vitePluginTest from "./plugins/vite-plugin-test";
+import vitePluginDemo from "./plugins/vite-plugin-demo";
 // 虚拟模块插件
 import virtual from "./plugins/vite-plugin-virtual-module";
 // 调试插件
@@ -60,7 +60,7 @@ export default defineConfig({
                 ]
             }
         }),
-        vitePluginTest(),
+        vitePluginDemo(),
         virtual(),
         legacy({
             // 设置目标浏览器，browserslist 配置语法
